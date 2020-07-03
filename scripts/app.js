@@ -19,8 +19,18 @@ const updateUI = (data) => {
     </div>
   `;
 
-  // remove the d-none class if present
-  if(card.classList.contains("d-none")){
+  const iconSrc = `img/icons/6.svg`
+  icon.setAttribute("src", iconSrc);
+
+  let timeSrc = null;
+  if (weather.IsDayTime) {
+    timeSrc = "img/day.svg";
+  } else {
+    timeSrc = "img/night.svg";
+  }
+  time.setAttribute("src", timeSrc);
+
+  if (card.classList.contains("d-none")) {
     card.classList.remove("d-none");
   }
 };
@@ -29,14 +39,17 @@ const updateCity = async (city) => {
 
   const cityDets = await getCity(city);
   const weather = await getWeather(cityDets.Key);
-  return { cityDets, weather };
+  return {
+    cityDets,
+    weather
+  };
 
 };
 
 cityForm.addEventListener("submit", e => {
   // prevent default action
   e.preventDefault();
-  
+
   // get city value
   const city = cityForm.city.value.trim();
   cityForm.reset();
