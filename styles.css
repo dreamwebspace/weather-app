@@ -16,3 +16,13 @@ body{
   width: 100px;
   margin-bottom: -50px;
 }
+
+.image{
+  max-height: 200px;
+  margin-top: 8px;
+}
+
+.lower {
+
+  margin-top: 100px;
+}
